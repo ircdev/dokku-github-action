@@ -17,11 +17,9 @@ GIT_COMMAND="git push dokku@$HOST:$PROJECT"
 echo "Adding repository directory to the git global config as a safe directory"
 git config --global --add safe.directory /github/workspace
 
-echo "Testing git remote output"
-git remote show origin 2>&1
-
 echo "Detect the project default branch: master or main"
 DEFAULT_BRANCH="$(git remote show origin | awk '/HEAD branch/ {print $NF}')"
+echo "Detected branch: $DEFAULT_BRANCH"
 
 if [ -z "$DEFAULT_BRANCH" ]
 then
@@ -29,11 +27,6 @@ then
 fi
 
 echo "Default is $DEFAULT_BRANCH"
-
-
-# Remove this after testing
-echo "Debugging - exit 0 do not actually deploy"
-exit 0
 
 if [ -n "$BRANCH" ]; then
     GIT_COMMAND="$GIT_COMMAND $BRANCH:$DEFAULT_BRANCH"
