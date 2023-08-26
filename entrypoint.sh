@@ -1,5 +1,5 @@
 #!/bin/sh
-# set -e
+set -e
 
 echo "Setting up SSH directory"
 SSH_PATH="$HOME/.ssh"
