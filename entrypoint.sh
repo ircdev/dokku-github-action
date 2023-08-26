@@ -25,6 +25,11 @@ fi
 
 echo "Default is $DEFAULT_BRANCH"
 
+
+# Remove this after testing
+echo "Debugging - exit 0 do not actually deploy"
+exit 0
+
 if [ -n "$BRANCH" ]; then
     GIT_COMMAND="$GIT_COMMAND $BRANCH:$DEFAULT_BRANCH"
 else
