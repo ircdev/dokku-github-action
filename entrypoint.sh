@@ -12,6 +12,9 @@ chmod 600 "$SSH_PATH/deploy_key"
 
 GIT_COMMAND="git push dokku@$HOST:$PROJECT"
 
+echo "Testing git remote output"
+git remote show origin
+
 echo "Detect the project default branch: master or main"
 DEFAULT_BRANCH="$(git remote show origin | awk '/HEAD branch/ {print $NF}')"
 
