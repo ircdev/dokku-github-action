@@ -1,5 +1,5 @@
 #!/bin/sh
-set -e
+# set -e
 
 echo "Setting up SSH directory"
 SSH_PATH="$HOME/.ssh"
@@ -13,7 +13,8 @@ chmod 600 "$SSH_PATH/deploy_key"
 GIT_COMMAND="git push dokku@$HOST:$PROJECT"
 
 echo "Testing git remote output"
-git remote show origin
+git remote show origin 2>&1
+
 
 echo "Detect the project default branch: master or main"
 DEFAULT_BRANCH="$(git remote show origin | awk '/HEAD branch/ {print $NF}')"
